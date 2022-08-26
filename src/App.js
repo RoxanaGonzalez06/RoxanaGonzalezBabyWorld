@@ -5,20 +5,22 @@ import NavBar from './components/NavBar/NavBar';
 
 import ItemListContainer from './components/ItemListConteiner/ItemListContainer';
 
-function App() {
+class App extends React.Component{ 
+  render() {
+    return (
 
-  return (
-
-    <>
-      
-      <NavBar />
-      <ItemListContainer 
-      greeting = "Bienvenidos a su tienda Online!"
-      />
-
-      
-    </>
-  )
+      <>
+        
+        <NavBar />
+        <ItemListContainer 
+        greeting = "Bienvenidos a su tienda Online!"
+        />
+  
+        
+      </>
+    )
+  }
 }
+
 
 export default App;

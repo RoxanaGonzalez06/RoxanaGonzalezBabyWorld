@@ -1,0 +1,30 @@
+.contenedorUno{
+    width: auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: #EEEEEE  ;
+    border: 3px solid #FFCC80 ;
+    text-decoration: none;
+}
+
+img {
+    width: 10%;
+}
+
+nav{
+    width: 75%;
+    display: flex;
+    flex-direction:column;
+}
+
+ul{
+    list-style: none;
+    
+}
+
+li{
+    text-decoration: none
+}
+
+
