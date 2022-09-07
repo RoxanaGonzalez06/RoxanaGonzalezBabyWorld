@@ -15,6 +15,8 @@ const Products = [
   img:'https://d3ugyf2ht6aenh.cloudfront.net/stores/825/266/products/bs-ss17_1461-9b2c6eb4c1a488ad1316025480213522-320-0.jpg'},
   {id: 6, name:'Body Petit', price:'$1.980', description:'Body color celeste de interlock con cuello baby bordado, 100% algodón.', 
   img:'https://d3ugyf2ht6aenh.cloudfront.net/stores/825/266/products/babysu-2022_2761-bf3575b3e44aa8301d16586242391626-320-0.jpg'},
+  {id: 7, name:'Body Jazmín', price:'$1.490', description:'Body de interlock, estampado con brillitos. Colores disponibles: Gris y Rosa. 100% algodón.',
+img:'https://d3ugyf2ht6aenh.cloudfront.net/stores/825/266/products/babysusw17_008-021-ecb2121c70e986f29016257012417400-320-0.jpg'}
 ]
 
 const ItemListContainer = ({greeting}) => {

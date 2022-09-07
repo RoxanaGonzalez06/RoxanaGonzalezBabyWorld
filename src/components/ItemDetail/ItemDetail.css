@@ -1,0 +1,27 @@
+.containerP {
+    width: 90%;
+    margin: auto;
+    padding: 1%;
+}
+
+@media screen and (min-width:768px) {
+    .containerP{
+        width: 60%;
+    }
+}
+
+.contDetailP{
+    margin: 1%;
+    padding: 1%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.imgP{
+    width: 50%;
+}
+
+.detailP{
+    width: 100%;
+}
