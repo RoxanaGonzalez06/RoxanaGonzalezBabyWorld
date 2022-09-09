@@ -4,7 +4,6 @@ import './ItemDetail.css'
 const ItemDetail = ({data}) => {
     console.log(data)
   return (
-    <div className='containerP'>
         <div className='contDetailP'>
             <h3>Detalle</h3>
             <img className='imgP' src={data.img} alt=""/>
@@ -14,7 +13,6 @@ const ItemDetail = ({data}) => {
                     <p>{data.description}</p>
             </div>
         </div>
-    </div>
   )
 }
 

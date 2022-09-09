@@ -1,8 +1,9 @@
 import React from 'react'
 import './NavBar.css'
 import logo from './pngwing.com (3).png'
-import {Button} from '@mui/material'
 import CartWidget from '../CartWidget/CartWidget'
+
+import {NavLink} from 'react-router-dom'
 
 const NavBar = () => {
   return (
@@ -12,16 +13,16 @@ const NavBar = () => {
       <nav>
           <ul>
             <li>
-              <Button variant='contained' size="medium" color='warning' href="#">Inicio</Button> 
+              <NavLink to ='/'>Inicio</NavLink> 
             </li>
             <li>
-              <Button variant='contained' size="medium" color='warning' href="#">Productos</Button>
+              <NavLink to ='/productos/nuevo'>Productos</NavLink>
             </li>
             <li>
-              <Button variant='contained' size="medium" color='warning' href="#">Ofertas</Button>
+              <NavLink to ='/productos/sale'>Ofertas</NavLink>
             </li>
             <li>
-              <Button variant='contained' size="medium" color='warning' href="#">Contacto</Button>  
+              <NavLink to ='/contacto'>Contacto</NavLink>  
             </li>
             <li>
               <i><CartWidget /></i>
