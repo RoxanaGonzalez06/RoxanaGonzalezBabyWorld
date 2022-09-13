@@ -16,7 +16,7 @@ function Item ({info}) {
     return (
       <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>  
-            <Link to={`/detalle/${info.Id}`} className='containerP'>
+            <Link to={`/detalle/${info.id}`} className='containerP'>
               <CardMedia
                 component="img"
                 height="400"
