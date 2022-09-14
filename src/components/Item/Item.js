@@ -4,15 +4,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import ItemCount from '../ItemCount/ItemCount';
+
 
 import {Link} from 'react-router-dom';
 
 function Item ({info}) {  
-    const onAdd = (quantity) =>{
-      console.log (`Agregaste a tu carrito de compras ${quantity} unidades`)
-    }
-  
     return (
       <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>  
@@ -33,7 +29,6 @@ function Item ({info}) {
               <Typography variant="body2" color="text.secondary">
                 {info.description}
               </Typography>
-              <ItemCount initial={0} stock={10} onAdd={onAdd}/>
             </CardContent>
         </CardActionArea>
       </Card>
