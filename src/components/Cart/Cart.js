@@ -1,35 +1,34 @@
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 import { useCartContext } from '../../context/CartContext'
 import ItemCart from '../ItemCart/ItemCart';
 import Contact from '../Contact/Contact'
 
 const Cart = () => {
-  const {cart, totalPrice} = useCartContext ();
+  const {cart, totalPrice} = useCartContext();
   const [counter, setCounter] = useState(0);
 
     const handlerCounterUp= ()=>{
         setCounter(counter + 1);
     }
 
-  const order = {
-    buyer: {
-      user: '',
-      email: '',
-      phone: '',
-      addres: ''
-    },
-    items: cart.map(product => ({ id: product.id, name: product.name, preice: product.price, quantity: product.quantity })),
-    total: totalPrice(),
-  }
+  // const order = {
+  //   buyer: {
+  //     user: '',
+  //     email: '',
+  //     phone: '',
+  //     addres: ''
+  //   },
+  //   items: cart.map(product => ({ id: product.id, name: product.name, preice: product.price, quantity: product.quantity })),
+  //   total: totalPrice(),
+  // }
 
-  const handleClik = () => {
-    const db = getFirestore();
-    const ordersCollection = collection (db, 'orders');
-    addDoc(ordersCollection, order)
-    .then(({ id })=> console.log(id))
-  }
+  // const handleClik = () => {
+  //   const db = getFirestore();
+  //   const ordersCollection = collection (db, 'orders');
+  //   addDoc(ordersCollection, order)
+  //   .then(({ id })=> console.log(id))
+  // }
 
   if (cart.length === 0){
       return(

@@ -1,20 +1,11 @@
 import './Contact.css';
-import { Button, TextField } from '@mui/material';
-
+import { Button, TextField, Alert } from '@mui/material';
+import React, {useState} from 'react'
 import * as yup from'yup';
 import { Formik } from 'formik';
 
 import { collection, addDoc, getFirestore } from "firebase/firestore";
 // import { db } from "../../firebase/config"
-
-const initialState = {
-  name:'',
-  address: '',
-  email: '',
-  phone: ''
-}
-
-
 
 const yupSchema = yup
   .object()
@@ -30,25 +21,26 @@ const yupSchema = yup
   .email()
   .required(),
   phone: yup
-  .string()
+  .number()
+  .integer('Debe ser de tipo entero')
   .required()
   .min(11, 'Por favor ingrese teléfono con 11 digitos'),
 })
 .required();
 
-const submitHandler = (values, resetForm) => {
-  console.log(values);
-  resetForm ();
-}
-
-const handleClick = () => {
-    const db = getFirestore();
-    const ordersCollection = collection (db, 'orders');
-    addDoc(ordersCollection, initialState)
-    .then(({ id })=> console.log(id))
-}
 
 const Contact = () => {
+  const [id, setId] = useState(null);
+
+  const submitHandler = (values, resetForm) => {
+    console.log(values);
+    const db = getFirestore();
+    const ordersCollection = collection (db, 'orders');
+    addDoc(ordersCollection, values)
+    .then(({ id })=> setId(id))
+    resetForm ();
+  }
+
   return (
     <div className='Contact'>
       <h1>Formulario de Contacto</h1>
@@ -102,7 +94,8 @@ const Contact = () => {
           />
           {errors.email && touched.email && errors.email}
           <TextField
-            name= 'phone'
+            name='phone'
+            type='number'
             placeholder='Teléfono'
             variant='outlined'
             className='TextField'
@@ -117,8 +110,9 @@ const Contact = () => {
           variant='contained'
           type='submit'
           sx={{ width: '400px', height: '54px'}}
-          onClick={handleClick}
           >Enviar</Button>
+          {id !== null && <Alert severity="success">Se genero orden de compra nro {id}</Alert>}
+          
         </form>
       )}
       </Formik>

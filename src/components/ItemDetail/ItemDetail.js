@@ -22,7 +22,14 @@ const ItemDetail = ({data}) => {
                     <p>{data.description}</p>
                 {
                     goToCart
-                    ? <Link to='/carrito'>Agregar al Carrito</Link>
+                    ?  <>
+                            <div>
+                            <Link to='/carrito'>Finalizar Compra</Link>
+                            </div>
+                            <div>
+                            <Link to='/'>Seguir Comprando</Link>
+                            </div>
+                       </>
                     : <ItemCount initial={0} stock={10} onAdd={onAdd}/>
                 }
             </div>
