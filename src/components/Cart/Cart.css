@@ -1,0 +1,16 @@
+.boton{
+    margin: 1%;
+    padding: 2%;
+}
+
+.message {
+    color: #212F3D;
+    width: auto;
+    margin: 1%;
+    padding: 10%;
+    font-size: x-large;
+    font-family:cursive;
+    font-weight: bold;
+    text-align: center;
+}
+

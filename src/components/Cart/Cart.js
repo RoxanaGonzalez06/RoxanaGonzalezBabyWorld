@@ -1,8 +1,9 @@
+import './Cart.css';
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 import { useCartContext } from '../../context/CartContext'
 import ItemCart from '../ItemCart/ItemCart';
-import Contact from '../Contact/Contact'
+import BuyerContact from '../BuyerContact/BuyerContact'
 
 const Cart = () => {
   const {cart, totalPrice} = useCartContext();
@@ -12,29 +13,13 @@ const Cart = () => {
         setCounter(counter + 1);
     }
 
-  // const order = {
-  //   buyer: {
-  //     user: '',
-  //     email: '',
-  //     phone: '',
-  //     addres: ''
-  //   },
-  //   items: cart.map(product => ({ id: product.id, name: product.name, preice: product.price, quantity: product.quantity })),
-  //   total: totalPrice(),
-  // }
-
-  // const handleClik = () => {
-  //   const db = getFirestore();
-  //   const ordersCollection = collection (db, 'orders');
-  //   addDoc(ordersCollection, order)
-  //   .then(({ id })=> console.log(id))
-  // }
-
   if (cart.length === 0){
       return(
         <>
-          <p>No hay productos es su carrito</p>
+          <p className='message'>No hay productos es su carrito de compra!</p>
+          <div className='boton'>
           <Link to='/'>Ir a Productos</Link>
+          </div>
         </>
       );
   }
@@ -47,7 +32,7 @@ const Cart = () => {
       <p>
         total: {totalPrice()}
       </p>
-      {counter > 0 ? <Contact /> : <button onClick={handlerCounterUp}>Realizar Compra</button>
+      {counter > 0 ? <BuyerContact /> : <button onClick={handlerCounterUp}>Realizar Compra</button>
       }
     </>
   )

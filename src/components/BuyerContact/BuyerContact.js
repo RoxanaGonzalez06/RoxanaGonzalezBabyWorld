@@ -1,8 +1,8 @@
-import './Contact.css';
+import './BuyerContact.css';
 import { Button, TextField, Alert } from '@mui/material';
 import React, {useState} from 'react'
 import * as yup from'yup';
-import { Formik, Field } from 'formik';
+import { Formik } from 'formik';
 
 import { collection, addDoc, getFirestore } from "firebase/firestore";
 
@@ -22,22 +22,19 @@ const yupSchema = yup
   phone: yup
   .number()
   .integer('Debe ser de tipo entero')
-  .required('Por favor ingrese número de teléfono'),
-  description: yup
-      .string()
-      .required('Por favor ingrese su consulta')
+  .required('Por favor ingrese número de teléfono')
   })
 .required();
 
 
-const Contact = () => {
+const BuyerContact = () => {
   const [id, setId] = useState(null);
 
   const submitHandler = (values, resetForm) => {
     console.log(values);
     const db = getFirestore();
-    const contactUsers = collection (db, 'contactUsers');
-    addDoc(contactUsers, values)
+    const ordersCollection = collection (db, 'orders');
+    addDoc(ordersCollection, values)
     .then(({ id })=> setId(id))
     resetForm ();
   }
@@ -46,7 +43,7 @@ const Contact = () => {
     <div className='Contact'>
       <h1>Formulario de Contacto</h1>
       <Formik 
-        initialValues={{name: '', adress: '', email: '', phone: '', description: ''}}
+        initialValues={{name: '', adress: '', email: '', phone: '' }}
         onSubmit={(values, { resetForm }) => submitHandler(values, resetForm)}
         validationSchema={yupSchema}
       >
@@ -106,26 +103,13 @@ const Contact = () => {
             onBlur={handleBlur}
           />
           {errors.phone && touched.phone && errors.phone}
-          <Field 
-            name='description'
-            component='textarea'
-            placeholder='Ingrese su consulta'
-            variant='outlined'
-            className='TextField'
-            sx={{ mb: 1 }}
-            onChange={handleChange}
-            value={values.description}
-            onBlur={handleBlur}
-            rows="4"
-            />
-          {errors.description && touched.description && errors.description}
           <Button
           disabled={!(isValid & dirty)}
           variant='contained'
           type='submit'
           sx={{ width: '400px', height: '54px'}}
           >Enviar</Button>
-          {id !== null && <Alert severity="success">Se envió exitosamente su solicitud de contacto.</Alert>}
+          {id !== null && <Alert severity="success">Se generó orden de compra nro. {id}</Alert>}
           
         </form>
       )}
@@ -134,4 +118,4 @@ const Contact = () => {
   )
 }
 
-export default Contact
+export default BuyerContact
